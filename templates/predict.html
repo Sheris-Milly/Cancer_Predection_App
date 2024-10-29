@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Tumor Type</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Breast Cancer Prediction</h1>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('status') }}">API Status</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Enter Tumor Characteristics</h2>
+            <form id="predictForm">
+                <div class="form-group"><label>Clump Thickness</label><input type="number" id="clump_thickness" required></div>
+                <div class="form-group"><label>Uniformity of Cell Size</label><input type="number" id="cell_size" required></div>
+                <div class="form-group"><label>Uniformity of Cell Shape</label><input type="number" id="cell_shape" required></div>
+                <div class="form-group"><label>Marginal Adhesion</label><input type="number" id="marginal_adhesion" required></div>
+                <div class="form-group"><label>Single Epithelial Cell Size</label><input type="number" id="epithelial_cell_size" required></div>
+                <div class="form-group"><label>Bare Nuclei</label><input type="number" id="bare_nuclei" required></div>
+                <div class="form-group"><label>Bland Chromatin</label><input type="number" id="bland_chromatin" required></div>
+                <div class="form-group"><label>Normal Nucleoli</label><input type="number" id="normal_nucleoli" required></div>
+                <div class="form-group"><label>Mitoses</label><input type="number" id="mitoses" required></div>
+                <button type="button" class="cta-button" onclick="submitForm()">Predict</button>
+            </form>
+            <div id="result" class="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Breast Cancer Prediction | All rights reserved</p>
+            <p>Developed by [Your Company Name]</p>
+        </div>
+    </footer>
+</body>
+</html>

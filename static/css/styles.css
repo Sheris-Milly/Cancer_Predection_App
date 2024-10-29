@@ -1,0 +1,153 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background-color: #f8e1e7;
+    padding: 1rem 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header h1 {
+    color: #d81b60;
+}
+
+header nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #d81b60;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #d81b60, #f8e1e7);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #d81b60;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #c2185b;
+}
+
+/* Form Section */
+.form-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+    color: #d81b60;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Result and Status Boxes */
+.result-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.status-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #ffe0b2;
+    color: #f57c00;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+.footer-container {
+    background-color: #f8e1e7;
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    margin-top: auto;
+}
+
+.result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #d81b60;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
