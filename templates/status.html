@@ -5,34 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Status</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Overall font style and background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdf6fb; /* Light pink background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        /* Navigation bar styling */
+        nav {
+            background-color: #d14c86; /* Pink color for navbar */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffccdd; /* Lighter pink on hover */
+        }
+        /* Main content styling */
+        .health-check {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .health-check h1 {
+            color: #d14c86; /* Pink color for title */
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .status {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .status strong {
+            color: #388e3c; /* Dark green for "healthy" status */
+        }
+        /* Button styling */
+        .btn {
+            padding: 12px 24px;
+            background-color: #d14c86; /* Pink button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #b63c72; /* Darker pink on hover */
+        }
+        /* Footer styling */
+        footer {
+            background-color: #d14c86; /* Same pink as navbar */
+            color: white;
+            text-align: center;
+            padding: 0px 0;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <h1>Breast Cancer Prediction</h1>
-            <nav>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('predict') }}">Predict</a>
-                <a href="{{ url_for('status') }}">API Status</a>
-                <a href="{{ url_for('aboutus_page')}}">About us</a>
-            </nav>
-        </div>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('status') }}">Status</a></li>
+            <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section class="status-section">
-            <h2>API Status</h2>
-            <div id="statusResult" class="status-box">Checking API status...</div>
-            <button class="cta-button" onclick="checkApiStatus()">Check Status</button>
-        </section>
-    </main>
+    <!-- Main Content: API Status Section -->
+    <div class="health-check">
+        <h1>System Health Status</h1>
+        <p class="status">The system is <strong>healthy</strong> and operational.</p>
+        <button class="btn" onclick="checkApiStatus()">Check API Status</button>
+    </div>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 Breast Cancer Prediction | All rights reserved</p>
-            <p>Developed by ARAGOU Wassef & AGJOUD Imad & MALIH Mouad </p>
-        </div>
+        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

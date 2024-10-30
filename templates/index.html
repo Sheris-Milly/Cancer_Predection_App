@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breast Cancer Prediction</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Breast Cancer Prediction</h1>
-            <nav>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('predict') }}">Predict</a>
-                <a href="{{ url_for('status') }}">API Status</a>
-                <a href="{{ url_for('aboutus_page')}}">About us</a>
-            </nav>
-        </div>
-    </header>
+    <nav class="navbar">
+        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('status') }}">Status</a></li>
+            <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
+        </ul>
+    </nav>
 
     <section class="hero">
         <div class="hero-content">
@@ -28,18 +27,20 @@
     </section>
 
     <main>
-        <section class="intro">
-            <h2>About Our Prediction Tool</h2>
-            <p>Using machine learning, this tool predicts the likelihood of breast cancer, assisting in the quick and reliable analysis of patient data.</p>
-            <a href="{{ url_for('learnmore_page') }}" class="cta-button secondary-button">Learn More About The Breast Cancer</a>
+        <section class="about">
+            <div class="about-content">
+                <h2>About Our Prediction Tool</h2>
+                <p>Using machine learning, this tool predicts the likelihood of breast cancer, assisting in the quick and reliable analysis of patient data. Our mission is to make early detection more accessible and effective for all.</p>
+                <a href="{{ url_for('learnmore_page') }}" class="cta-button secondary-button">Learn More About Breast Cancer</a>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/healthcare.svg') }}" alt="Healthcare Illustration">
+            </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 Breast Cancer Prediction | All rights reserved</p>
-            <p>Developed by ARAGOU Wassef & AGJOUD Imad & MALIH Mouad </p>
-        </div>
+        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
     </footer>
 </body>
 </html>

@@ -5,18 +5,53 @@
     box-sizing: border-box;
 }
 
+/* Overall font style and background */
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdf6fb; /* Light pink background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+/* Navigation bar styling */
+nav {
+    background-color: #d14c86; /* Pink color for navbar */
+    color: white;
+    padding: 15px 20px;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffccdd; /* Lighter pink on hover */
 }
 
 /* Header Styling */
 header {
-    background-color: #f8e1e7;
-    padding: 1rem 0;
+    background-color: #ffe3f1;
+    padding: 20px;
+    text-align: center;
 }
 
 .header-container {
@@ -29,26 +64,18 @@ header {
 }
 
 header h1 {
-    color: #d81b60;
-}
-
-header nav a {
-    color: #333;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-header nav a:hover {
-    color: #d81b60;
+    color: #d14c86;
+    margin: 0;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(to right, #d81b60, #f8e1e7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, #ff7eaa, #ffafcc);
     color: white;
-    padding: 4rem 0;
     text-align: center;
 }
 
@@ -60,20 +87,45 @@ header nav a:hover {
 /* CTA Button */
 .cta-button {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: #d81b60;
+    padding: 12px 24px;
+    background-color: #d14c86; /* Pink button color */
     color: white;
     border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-top: 1rem;
     text-decoration: none;
-    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #c2185b;
+    background-color: #b63c72; /* Darker pink on hover */
+}
+
+/* Main Content Styling (Health Check Section) */
+.health-check {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.health-check h1 {
+    color: #d14c86; /* Pink color for title */
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.status {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.status strong {
+    color: #388e3c; /* Dark green for "healthy" status */
 }
 
 /* Form Section */
@@ -132,13 +184,63 @@ header nav a:hover {
     font-weight: bold;
 }
 
+/* Button Styling */
+.btn {
+    padding: 12px 24px;
+    background-color: #d14c86; /* Pink button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #b63c72; /* Darker pink on hover */
+}
+
 /* Footer Styling */
+footer {
+    background-color: #d14c86; /* Same pink as navbar */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+}
+
 .footer-container {
-    background-color: #f8e1e7;
     text-align: center;
     padding: 1rem;
     color: #666;
-    margin-top: auto;
+}
+
+/* Additional Page Styling */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: #ffe3f1;
+    gap: 30px;
+}
+
+.about-content {
+    max-width: 500px;
+}
+
+.about h2 {
+    color: #d14c86;
+}
+
+.about-image {
+    flex-shrink: 0;
+    width: 250px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
 }
 
 .result {
@@ -151,3 +253,20 @@ header nav a:hover {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.secondary-button {
+    background-color: #ff87b2;
+}
+
+.main {
+    flex: 1;
+}
+.team-img {
+         width: 250px !important; /* Set the desired width */
+         height: 250px !important; /* Ensure height matches width */
+         border-radius: 50% !important; /* Forces the image to be circular */
+         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+         object-fit: cover; /* Ensures the image fills the circular frame */
+         }
+
+

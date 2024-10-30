@@ -4,25 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predict Tumor Type</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+       body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdf6fb; /* Light pink background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #d14c86; /* Pink color for navbar */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffccdd;
+        }
+
+        /* Form Section */
+        .form-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-section h2 {
+            color: #d81b60;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #d81b60;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus {
+            box-shadow: 0 0 8px rgba(216, 27, 96, 0.4);
+            outline: none;
+        }
+
+        .cta-button {
+            background-color: #d81b60;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #c2185b;
+        }
+
+        /* Modal Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #d81b60;
+            font-size: 1.2rem;
+        }
+
+        .close-button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: #c2185b;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #d14c86;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+.error-message {
+    color: #d81b60; /* Use your theme color */
+    background-color: #ffccdd; /* Light pink background */
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+     .malignant {
+            color: red;
+        }
+        .benign {
+            color: green;
+        }
+
+    </style>
+    <script>
+        function submitForm() {
+            const data = {
+                'Clump Thickness': parseInt(document.getElementById('clump_thickness').value),
+                'Uniformity of Cell Size': parseInt(document.getElementById('cell_size').value),
+                'Uniformity of Cell Shape': parseInt(document.getElementById('cell_shape').value),
+                'Marginal Adhesion': parseInt(document.getElementById('marginal_adhesion').value),
+                'Single Epithelial Cell Size': parseInt(document.getElementById('epithelial_cell_size').value),
+                'Bare Nuclei': parseInt(document.getElementById('bare_nuclei').value),
+                'Bland Chromatin': parseInt(document.getElementById('bland_chromatin').value),
+                'Normal Nucleoli': parseInt(document.getElementById('normal_nucleoli').value),
+                'Mitoses': parseInt(document.getElementById('mitoses').value)
+            };
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultModal = document.getElementById('resultModal');
+                const resultContent = document.getElementById('resultContent');
+                const probabilityContent = document.getElementById('probabilityContent'); // Get the new paragraph
+
+                // Display the prediction result and probabilities in the modal
+                resultContent.innerText = `Prediction: ${data.prediction} (Value: ${data.predicted_value})`;
+                probabilityContent.innerText = `Probabilities \n - Benign: ${data.probabilities.Benign}%,\n  - Malignant: ${data.probabilities.Malignant}%`;
+                resultModal.style.display = 'flex';
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function closeModal() {
+            document.getElementById('resultModal').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Breast Cancer Prediction</h1>
-            <nav>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('predict') }}">Predict</a>
-                <a href="{{ url_for('status') }}">API Status</a>
-                <a href="{{ url_for('aboutus_page')}}">About us</a>
-            </nav>
-        </div>
-    </header>
+    <nav class="navbar">
+        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('status') }}">Status</a></li>
+            <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section class="form-section">
             <h2>Enter Tumor Characteristics</h2>
+			<p>it take value 0 if empty.</p>
+			<div id="errorMessage" class="error-message" style="display: none;"></div>
             <form id="predictForm">
                 <div class="form-group"><label>Clump Thickness</label><input type="number" id="clump_thickness" required></div>
                 <div class="form-group"><label>Uniformity of Cell Size</label><input type="number" id="cell_size" required></div>
@@ -35,15 +239,21 @@
                 <div class="form-group"><label>Mitoses</label><input type="number" id="mitoses" required></div>
                 <button type="button" class="cta-button" onclick="submitForm()">Predict</button>
             </form>
-            <div id="result" class="result"></div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2024 Breast Cancer Prediction | All rights reserved</p>
-            <p>Developed by ARAGOU Wassef & AGJOUD Imad & MALIH Mouad</p>
+    <!-- Modal Pop-up -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <p id="resultContent"></p>
+			<p id="probabilityContent"></p>
+            <button class="close-button" onclick="closeModal()">Close</button>
         </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
     </footer>
 </body>
 </html>
+

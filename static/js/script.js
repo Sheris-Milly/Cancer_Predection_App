@@ -11,6 +11,20 @@ function submitForm() {
         'Mitoses': parseInt(document.getElementById('mitoses').value)
     };
 
+    // Clear previous error message
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.style.display = 'none';
+    errorMessage.innerText = '';
+
+    // Check for empty inputs
+    for (const key in data) {
+        if (isNaN(data[key]) || data[key] < 0) {
+            errorMessage.innerText = 'Please enter valid numbers for all fields.';
+            errorMessage.style.display = 'block'; // Show the error message
+            return; // Exit the function if there's an invalid input
+        }
+    }
+
     fetch('/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -18,10 +32,16 @@ function submitForm() {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('result').innerText = `Prediction: ${data.prediction}`;
+        const resultModal = document.getElementById('resultModal');
+        const resultContent = document.getElementById('resultContent');
+        
+        // Display the prediction result in the modal
+        resultContent.innerText = `Prediction: ${data.prediction}`;
+        resultModal.style.display = 'flex';
     })
     .catch(error => console.error('Error:', error));
 }
+
 
 // Function to check the API status
 function checkApiStatus() {

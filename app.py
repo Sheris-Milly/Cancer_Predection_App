@@ -26,10 +26,31 @@ def predict():
         data['Bland Chromatin'], data['Normal Nucleoli'], data['Mitoses']
     ]).reshape(1, -1)
 
-    prediction = model.predict(features)
-    prediction_text = 'Benign' if prediction[0] == 2 else 'Malignant'
+    # Get the prediction from the regressor
+    prediction = model.predict(features)[0]
 
-    return jsonify({"prediction": prediction_text})
+    # Calculate probabilities based on the prediction
+    if prediction < 3:
+        benign_prob = ((3 - prediction) / 1) * 100  # Scale between 2 and 3
+        malignant_prob = ((prediction - 2) / 1) * 100  # Scale between 2 and 3
+    else:
+        benign_prob = ((4 - prediction) / 1) * 100  # Scale between 3 and 4
+        malignant_prob = ((prediction - 3) / 1) * 100  # Scale between 3 and 4
+
+    # Map prediction to text
+    prediction_text = 'Benign' if prediction < 3 else 'Malignant'
+
+    # Create a response with probabilities
+    response = {
+        "prediction": prediction_text,
+        "predicted_value": round(prediction, 2),
+        "probabilities": {
+            "Benign": round(benign_prob, 2),
+            "Malignant": round(malignant_prob, 2)
+        }
+    }
+
+    return jsonify(response)
 
 @app.route('/status')
 def status_page():
