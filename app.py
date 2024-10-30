@@ -67,6 +67,9 @@ def aboutus_page():
 @app.route('/learnmore')
 def learnmore_page():
     return render_template('learnmore.html')
+@app.route('/explain')
+def explain_page():
+    return render_template('explain.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
