@@ -33,20 +33,23 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .nav-links a {
-    color: white;
+    color: white; /* Initial color is white */
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Added color transition */
 }
 
 .nav-links a:hover {
-    color: #ffccdd; /* Lighter pink on hover */
+    background-color: #ffccdd; /* Lighter pink on hover */
+    color: black; /* Text turns black on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
 }
-
 /* Header Styling */
 header {
     background-color: #ffe3f1;
