@@ -39,5 +39,13 @@ def status_page():
 def status():
     return jsonify({"status": "online"})
 
+@app.route('/aboutus')
+def aboutus_page():
+    return render_template('aboutus.html')
+
+@app.route('/learnmore')
+def learnmore_page():
+    return render_template('learnmore.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
