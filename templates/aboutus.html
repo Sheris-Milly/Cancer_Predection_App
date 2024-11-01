@@ -57,7 +57,6 @@
 
         /* About Us Section styling */
         .outer-container {
-            padding: 10px 50px;
             background-color: rgb(244, 252, 255);
             flex: 1;
         }
@@ -148,23 +147,25 @@
 		.team-img {
          width: 250px !important; /* Set the desired width */
          height: 250px !important; /* Ensure height matches width */
-         border-radius: 50% !important; /* Forces the image to be circular */
+         border-radius: 40% !important; /* Forces the image to be circular */
          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
          object-fit: cover; /* Ensures the image fills the circular frame */
          }
 		       /* Footer styling */
-        footer {
-            background-color: #d14c86;
-            color: white;
-            text-align: center;
-            height: 70px;
-            margin-top: auto; /* Pushes footer to the bottom */
-            padding: 10px 0; /* Vertical padding */
-            width: 100%; /* Adjust width as needed */
+               footer {
+    background: linear-gradient(135deg, #d14c86 0%, #ff70a0 100%);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    width: 100%; /* Ensure it spans the full width */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    position: relative; /* Makes sure it aligns properly within its parent */
+    left: 0;
+}
 
-            border-top-left-radius: 20px; /* Optional rounded corners */
-            border-top-right-radius: 20px; /* Optional rounded corners */
-        }
 
     </style>
 </head>
