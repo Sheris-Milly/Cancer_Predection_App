@@ -26,16 +26,26 @@
         </div>
     </section>
 
-    <main>
-        <section class="about">
-            <div class="about-content">
-                <h2>About Our Prediction Tool</h2>
-                <p>Using machine learning, this tool predicts the likelihood of breast cancer, assisting in the quick and reliable analysis of patient data. Our mission is to make early detection more accessible and effective for all.</p>
-                <a href="{{ url_for('learnmore_page') }}" class="cta-button secondary-button">Learn More About Breast Cancer</a>
-            </div>
-            <div class="about-image">
-                <img src="{{ url_for('static', filename='images/healthcare.svg') }}" alt="Healthcare Illustration">
-            </div>
+    <main class="info-sections">
+        <section class="info-card">
+            <img src="path/to/icon1.svg" alt="Icon 1" class="info-icon">
+            <h3>Looking For Answers?</h3>
+            <p class="p1">Not knowing is scary. Start your research here and get help along the way.</p>
+            <a href="{{ url_for('learnmore_page') }}" class="cta-button">About Breast Cancer</a>
+        </section>
+        
+        <section class="info-card">
+            <img src="path/to/icon2.svg" alt="Icon 2" class="info-icon">
+            <h3>Get Help Now</h3>
+            <p>Everyone should have access to mammograms and diagnostic services.</p>
+            <a href="#" class="cta-button">Get Support</a>
+        </section>
+        
+        <section class="info-card">
+            <img src="path/to/icon3.svg" alt="Icon 3" class="info-icon">
+            <h3>Support The Cause</h3>
+            <p>We need your help. From donations to volunteering, everyone can make an impact.</p>
+            <a href="#" class="cta-button">Get Involved</a>
         </section>
     </main>
 
