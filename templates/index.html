@@ -28,24 +28,25 @@
 
     <main class="info-sections">
         <section class="info-card">
-            <img src="path/to/icon1.svg" alt="Icon 1" class="info-icon">
+            <img src="{{ url_for('static', filename='images/icon1.svg') }}" alt="Healthcare Illustration" style="width: 100px; height: 100px;">
             <h3>Looking For Answers?</h3>
             <p class="p1">Not knowing is scary. Start your research here and get help along the way.</p>
             <a href="{{ url_for('learnmore_page') }}" class="cta-button">About Breast Cancer</a>
         </section>
         
         <section class="info-card">
-            <img src="path/to/icon2.svg" alt="Icon 2" class="info-icon">
-            <h3>Get Help Now</h3>
-            <p>Everyone should have access to mammograms and diagnostic services.</p>
-            <a href="#" class="cta-button">Get Support</a>
+            <img src="{{ url_for('static', filename='images/icon2.svg') }}" alt="Healthcare Illustration" style="width: 100px; height: 100px;">
+            <h3>AI-Powered Risk Assessment</h3>
+            <p class="p1">Predict breast cancer risk with reliable, AI-driven insights for better outcomes.</p>
+            <a href="#" class="cta-button">About Our Model</a>
         </section>
         
         <section class="info-card">
-            <img src="path/to/icon3.svg" alt="Icon 3" class="info-icon">
+            <img src="{{ url_for('static', filename='images/icon3.svg') }}" alt="Healthcare Illustration" style="width: 100px; height: 100px;">
             <h3>Support The Cause</h3>
-            <p>We need your help. From donations to volunteering, everyone can make an impact.</p>
-            <a href="#" class="cta-button">Get Involved</a>
+            <p>We need your help. From donations to volunteering, check Fondation lala Salma.</p>
+            <<a href="https://contrelecancer.ma/en/" class="cta-button" target="_blank">Get Involved</a>
+
         </section>
     </main>
 
