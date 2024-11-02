@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request, jsonify
-import pickle
+import joblib
 import numpy as np
 
 app = Flask(__name__)
 
 # Load the Random Forest model
-with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
-
+model = joblib.load('best_random_forest_model.pkl')
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -19,23 +17,39 @@ def predict_page():
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
-    features = np.array([
-        data['Clump Thickness'], data['Uniformity of Cell Size'],
-        data['Uniformity of Cell Shape'], data['Marginal Adhesion'],
-        data['Single Epithelial Cell Size'], data['Bare Nuclei'],
-        data['Bland Chromatin'], data['Normal Nucleoli'], data['Mitoses']
-    ]).reshape(1, -1)
+
+    # Extract and validate features to ensure values are between 1 and 10
+    features = [
+        data.get('Clump Thickness', 0),
+        data.get('Uniformity of Cell Size', 0),
+        data.get('Uniformity of Cell Shape', 0),
+        data.get('Marginal Adhesion', 0),
+        data.get('Single Epithelial Cell Size', 0),
+        data.get('Bare Nuclei', 0),
+        data.get('Bland Chromatin', 0),
+        data.get('Normal Nucleoli', 0),
+        data.get('Mitoses', 0)
+    ]
+
+    # Ensure each feature is within the range [1, 10]
+    features = [min(max(f, 1), 10) for f in features]
+
+    # Convert features to numpy array and reshape for the model
+    features = np.array(features).reshape(1, -1)
 
     # Get the prediction from the regressor
     prediction = model.predict(features)[0]
 
     # Calculate probabilities based on the prediction
-    if prediction < 3:
-        benign_prob = ((3 - prediction) / 1) * 100  # Scale between 2 and 3
-        malignant_prob = ((prediction - 2) / 1) * 100  # Scale between 2 and 3
+    if prediction <= 2:
+        benign_prob = 100
+        malignant_prob = 0
+    elif prediction >= 4:
+        benign_prob = 0
+        malignant_prob = 100
     else:
-        benign_prob = ((4 - prediction) / 1) * 100  # Scale between 3 and 4
-        malignant_prob = ((prediction - 3) / 1) * 100  # Scale between 3 and 4
+        benign_prob = ((4 - prediction) / 2) * 100  # Scale from 2 to 4
+        malignant_prob = ((prediction - 2) / 2) * 100  # Scale from 2 to 4
 
     # Map prediction to text
     prediction_text = 'Benign' if prediction < 3 else 'Malignant'
