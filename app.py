@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
 import numpy as np
-
+import os
 app = Flask(__name__)
 
 # Load the Random Forest model
