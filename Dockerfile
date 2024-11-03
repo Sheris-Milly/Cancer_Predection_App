@@ -1,20 +1,15 @@
 # Use a lightweight Python image
-FROM python:3.8-slim
+FROM python:3.10-slim-buster
 
 # Set working directory
 WORKDIR /app
 
-# Copy application files
-COPY . /app
-
+COPY requirements.txt requirements.txt
 # Install dependencies
-RUN pip install -r requirements.txt
 
-# Expose the port Cloud Run expects
-EXPOSE 8080
+RUN pip3 install -r requirements.txt
 
-
-ENV FLASK_APP=main.py
+COPY . .
 
 # Start the Flask application on the required port
-CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+CMD ["python3", "app.py"]
