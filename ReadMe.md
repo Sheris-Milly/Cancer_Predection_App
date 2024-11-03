@@ -113,19 +113,19 @@ We welcome contributions to the Cancer Prediction App! If you have suggestions o
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## Contact Information
 
 For any inquiries, please contact:
 
-- **Name:** Sheris Milly
+- **Name:** [Imad Agjoud](https://www.linkedin.com/in/imad-agjoud/)
 - **Email:** imadagjoud@gmail.com
 - **GitHub:** [Sheris-Milly](https://github.com/Sheris-Milly)
 
 ---
 
-Thank you for using the Cancer Prediction App! We hope it proves helpful in understanding breast cancer risks.
+Thank you for using the Cancer Prediction App! We hope it proves helpful in understanding breast cancer prediction.
+## Acknowledgments
 
-
-Feel free to modify sections, add additional information, or adjust the language as needed to make it more suitable for your project's context.
+- Thanks to Professor Lamrani Yousseffor their guidance.
