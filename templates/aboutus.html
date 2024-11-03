@@ -8,164 +8,206 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         /* Overall font style and background */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fdf6fb; /* Light pink background */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdf6fb; /* Light pink background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
 
-        /* Navigation bar styling */
-        nav {
-            background-color: #d14c86; /* Pink color for navbar */
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Navigation bar styling */
+nav {
+    background-color: #d14c86; /* Pink color for navbar */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-        }
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
 
-        .nav-links a {
-            color: white; /* Initial color is white */
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Added color transition */
-        }
+.nav-links a {
+    color: white; /* Initial color is white */
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Added color transition */
+}
 
-        .nav-links a:hover {
-            background-color: #ffccdd; /* Lighter pink on hover */
-            color: black; /* Text turns black on hover */
-            transform: translateY(-2px); /* Lift effect on hover */
-        }
+.nav-links a:hover {
+    background-color: #ffccdd; /* Lighter pink on hover */
+    color: black; /* Text turns black on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
 
-        /* About Us Section styling */
-        .outer-container {
-            background-color: rgb(244, 252, 255);
-            flex: 1; /* Allows the main content to grow and push footer down */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* Mobile menu toggle */
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    display: none; /* Hidden on desktop */
+}
 
-        .inner-container {
-            max-width: 1320px;
-            flex-direction: column;
-            align-items: center;
-            margin: 50px auto;
-        }
+/* Main content styling */
+.outer-container {
+    background-color: rgb(244, 252, 255);
+    flex: 1; /* Allows the main content to grow and push footer down */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .section-head-text {
-            font-size: 35px;
-            font-weight: 700;
-            line-height: 48px;
-            color: #d14c86; /* Pink color for heading */
-            margin-bottom: 10px;
-            text-align: center;
-        }
+.inner-container {
+    max-width: 1320px;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+}
 
-        .section-subhead-text {
-            font-size: 25px;
-            color: rgb(153, 153, 153);
-            line-height: 35px;
-            max-width: 470px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
+.section-head-text {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 48px;
+    color: #d14c86; /* Pink color for heading */
+    margin-bottom: 10px;
+    text-align: center;
+}
 
-        .team-card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* Spaces out team cards */
-        }
+.section-subhead-text {
+    font-size: 25px;
+    color: rgb(153, 153, 153);
+    line-height: 35px;
+    max-width: 470px;
+    text-align: center;
+    margin-bottom: 60px;
+}
 
-        .team-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 70px;
-            width: calc(25% - 50px); /* Four cards per row, adjust as needed */
-        }
+.team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Spaces out team cards */
+}
 
-        .name {
-            font-size: 25px;
-            font-weight: 700;
-            color: rgb(102, 102, 102);
-            margin: 5px 0;
-        }
+.team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 70px;
+    width: calc(25% - 50px); /* Four cards per row, adjust as needed */
+}
 
-        .position {
-            font-size: 20px;
-            font-weight: 500;
-            color: rgb(0, 135, 177);
-        }
+.name {
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(102, 102, 102);
+    margin: 5px 0;
+}
 
-        .team-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 60%; /* Circular image */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-            object-fit: cover;
-        }
+.position {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(0, 135, 177);
+}
 
-        .social-media-links {
-            width: 125px;
-            display: flex;
-            justify-content: space-between;
-        }
+.team-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 60%; /* Circular image */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    object-fit: cover;
+}
 
-        @media (max-width: 768px) {
-            .team-card {
-                width: calc(50% - 40px); /* Two cards per row on tablet */
-            }
-        }
+.social-media-links {
+    width: 125px;
+    display: flex;
+    justify-content: space-between;
+}
 
-        @media (max-width: 500px) {
-            .outer-container {
-                padding: 10px 20px;
-            }
+/* Footer styling */
+footer {
+    background: linear-gradient(135deg, #d14c86 0%, #ff70a0 100%);
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    padding: 0px 0;
+}
 
-            .section-head-text {
-                text-align: center;
-            }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
 
-            .team-card {
-                width: 100%; /* One card per row on mobile */
-            }
-        }
+    /* Show the links when menu is toggled */
+    .nav-links.active {
+        display: flex;
+    }
 
-        /* Footer styling */
-        footer {
-            background: linear-gradient(135deg, #d14c86 0%, #ff70a0 100%);
-            color: white;
-            text-align: center;
-            margin-top: auto;
-            width: 100%;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-            font-family: 'Arial', sans-serif;
-            font-size: 14px;
-            padding: 0px 0;
-        }
+    .menu-toggle {
+        display: block; /* Show toggle icon on mobile */
+    }
+
+    /* Adjust card layout for mobile */
+    .team-card {
+        width: calc(50% - 40px); /* Two cards per row on tablet */
+        margin: 20px; /* Reduce margin for smaller screens */
+    }
+
+    /* Adjust text sizes for smaller screens */
+    .section-head-text {
+        font-size: 28px;
+    }
+
+    .section-subhead-text {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    .outer-container {
+        padding: 10px 20px;
+    }
+
+    .section-head-text {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .team-card {
+        width: 100%; /* One card per row on mobile */
+        margin: 10px 0; /* Adjust margin for smaller screens */
+    }
+}
+
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('predict') }}">Predict</a></li>
@@ -253,5 +295,11 @@
     <footer>
         <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

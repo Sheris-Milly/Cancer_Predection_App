@@ -216,6 +216,29 @@ footer {
 .benign {
     color: green;
 }
+
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    display: none; /* Hidden on desktop */
+}
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Show the links when menu is toggled */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* Show toggle icon on mobile */
+    }}
     </style>
     <script>
         function submitForm() {
@@ -258,6 +281,7 @@ footer {
 <body>
     <nav class="navbar">
         <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('predict') }}">Predict</a></li>
@@ -343,6 +367,12 @@ footer {
     <footer>
         <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
 

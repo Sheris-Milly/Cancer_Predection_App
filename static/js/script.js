@@ -61,3 +61,9 @@ function checkApiStatus() {
         document.getElementById('statusResult').classList.add("status-box");
     });
 }
+
+
+function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            }
