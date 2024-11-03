@@ -79,5 +79,5 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 - Made by [Imad Agjoud](https://www.linkedin.com/in/imad-agjoud/) ,Wassef Arragou ,Mouad Malih
-- Thanks to [Dr.Lamrani Youssef] for their guidance.
+- Thanks to Dr.Lamrani Youssef for their guidance.
 
