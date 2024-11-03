@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Load the Random Forest model
-model = joblib.load('best_random_forest_model.pkl')
+model = joblib.load('best_random_forest_model.joblib')
 @app.route('/')
 def home():
     return render_template('index.html')
