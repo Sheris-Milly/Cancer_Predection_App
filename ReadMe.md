@@ -24,7 +24,7 @@ Welcome to the **Cancer Prediction App**! This application leverages machine lea
 
 ## Technologies Used
 
-- **Frontend:** React, Tailwind CSS
+- **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Flask (for serving the machine learning model)
 - **Machine Learning Libraries:** Scikit-learn, Pandas, NumPy
 - **Data Visualization:** Plotly, Matplotlib
