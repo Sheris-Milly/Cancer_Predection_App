@@ -35,35 +35,28 @@ Welcome to the **Cancer Prediction App**! This application leverages machine lea
 
 To get started with the Cancer Prediction App, follow these steps:
 
-1. **Clone the Repository:**
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/Sheris-Milly/Cancer_Predection_App.git
+    ```
 
-   ```bash
-   git clone https://github.com/Sheris-Milly/Cancer_Predection_App.git
-   ```
+2. **Navigate into the project directory**:
+    ```bash
+    cd Cancer_Predection_App
+    ```
 
-2. **Navigate to the Project Directory:**
+3. **Install dependencies**:
+    It is recommended to use a virtual environment to manage dependencies.
+    ```bash
+    python3 -m venv env
+    source env/bin/activate # On Windows, use `env\Scripts\activate`
+    pip install -r requirements.txt
+    ```
 
-   ```bash
-   cd Cancer_Predection_App
-   ```
-
-3. **Install Dependencies:**
-
-   For the frontend, navigate to the client directory and install the required packages:
-
-   ```bash
-   cd client
-   npm install
-   ```
-
-   For the backend, ensure you have Python installed, then set up a virtual environment and install the dependencies:
-
-   ```bash
-   cd server
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   pip install -r requirements.txt
-   ```
+4. **Run the application**:
+    ```bash
+    python app.py
+    ```
 
 4. **Start the Application:**
 
@@ -74,14 +67,22 @@ To get started with the Cancer Prediction App, follow these steps:
    python app.py
    ```
 
-   Start the React frontend:
-
-   ```bash
-   cd client
-   npm start
-   ```
-
    Open your browser and navigate to `http://localhost:3000` to view the app.
+
+   ## Docker Setup
+
+To run the application using Docker:
+
+1. **Build the Docker image**:
+    ```bash
+    docker build -t breast-cancer-prediction-app .
+    ```
+
+2. **Run the Docker container**:
+    ```bash
+    docker run -p 5000:5000 breast-cancer-prediction-app
+    ```
+
 
 ## Usage
 
