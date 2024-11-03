@@ -13,5 +13,8 @@ RUN pip install -r requirements.txt
 # Expose the port Cloud Run expects
 EXPOSE 8080
 
+
+ENV FLASK_APP=main.py
+
 # Start the Flask application on the required port
 CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
