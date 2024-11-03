@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
+import pandas as pd
 import numpy as np
 import os
 app = Flask(__name__)
 
 # Load the Random Forest model
-model = joblib.load('best_random_forest_model.pkl')
+model = joblib.load('best_random_forest_model.joblib')
+scaler_loaded = joblib.load('scaler.joblib')
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -31,26 +33,27 @@ def predict():
         data.get('Mitoses', 0)
     ]
 
-    # Check if all features are 0
-    if all(f == 0 for f in features):
-        response = {
-            "prediction": "Benign",
-            "predicted_value": 0.0,
-            "probabilities": {
-                "Benign": 100.0,
-                "Malignant": 0.0
-            }
-        }
-        return jsonify(response)
-
     # Ensure each feature is within the range [1, 10]
     features = [min(max(f, 1), 10) for f in features]
 
-    # Convert features to numpy array and reshape for the model
-    features = np.array(features).reshape(1, -1)
+    # Convert features to a DataFrame
+    features_df = pd.DataFrame([features], columns=[
+        'Clump Thickness',
+        'Uniformity of Cell Size',
+        'Uniformity of Cell Shape',
+        'Marginal Adhesion',
+        'Single Epithelial Cell Size',
+        'Bare Nuclei',
+        'Bland Chromatin',
+        'Normal Nucleoli',
+        'Mitoses'
+    ])
+
+    # Scale the features using the loaded scaler
+    features_scaled = scaler_loaded.transform(features_df)
 
     # Get the prediction from the regressor
-    prediction = model.predict(features)[0]
+    prediction = model.predict(features_scaled)[0]
 
     # Calculate probabilities based on the prediction
     if prediction <= 2:
@@ -69,14 +72,15 @@ def predict():
     # Create a response with probabilities
     response = {
         "prediction": prediction_text,
-        "predicted_value": round(prediction, 2),
+        "predicted_value": round(prediction, 4),
         "probabilities": {
-            "Benign": round(benign_prob, 2),
-            "Malignant": round(malignant_prob, 2)
+            "Benign": round(benign_prob, 3),
+            "Malignant": round(malignant_prob, 3)
         }
     }
 
     return jsonify(response)
+
 
 @app.route('/status')
 def status_page():

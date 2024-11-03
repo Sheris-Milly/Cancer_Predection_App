@@ -209,13 +209,15 @@ footer {
 }
 
 /* Text Styling for Malignant/Benign Status */
-.malignant {
-    color: red;
-}
+ .benign {
+            color: green;
+     font-weight: bold;
+        }
+        .malignant {
+            color: red;
+            font-weight: bold;
 
-.benign {
-    color: green;
-}
+        }
 
 .menu-toggle {
     font-size: 24px;
@@ -263,11 +265,13 @@ footer {
             .then(data => {
                 const resultModal = document.getElementById('resultModal');
                 const resultContent = document.getElementById('resultContent');
-                const probabilityContent = document.getElementById('probabilityContent'); // Get the new paragraph
+                const probabilityContent = document.getElementById('probabilityContent');
 
-                // Display the prediction result and probabilities in the modal
-                resultContent.innerText = `Prediction: ${data.prediction} (Value: ${data.predicted_value})`;
-                probabilityContent.innerText = `Probabilities \n - Benign: ${data.probabilities.Benign}%,\n  - Malignant: ${data.probabilities.Malignant}%`;
+                // Change color based on prediction
+                const predictionClass = data.prediction === 'Benign' ? 'benign' : 'malignant';
+                resultContent.innerHTML = `Prediction: <span class="${predictionClass}">${data.prediction}</span> <br>(Value: ${data.predicted_value})`;
+                probabilityContent.innerText = `Probabilities \n - Benign: ${data.probabilities.Benign}% \n  - Malignant: ${data.probabilities.Malignant}%`;
+
                 resultModal.style.display = 'flex';
             })
             .catch(error => console.error('Error:', error));
@@ -300,18 +304,18 @@ footer {
             <form id="predictForm">
                 <div class="form-group">
                     <label for="clump_thickness">Clump Thickness</label>
-                    <input type="number" id="clump_thickness" value="0" required aria-describedby="clump_help">
+                    <input type="number" id="clump_thickness" value="0" required aria-describedby="clump_help" min="0" max="10">
                     <span class="help-tooltip" id="clump_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
                 </div>                
                 <div class="form-group">
                     <label for="cell_size">Uniformity of Cell Size</label>
-                    <input type="number" id="cell_size" value="0" required aria-describedby="cell_size_help">
+                    <input type="number" id="cell_size" value="0" required aria-describedby="cell_size_help" min="0" max="10">
                     <span class="help-tooltip" id="cell_size_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
                 </div>
                 
                 <div class="form-group">
                     <label for="cell_shape">Uniformity of Cell Shape</label>
-                    <input type="number" id="cell_shape" value="0" required aria-describedby="cell_shape_help">
+                    <input type="number" id="cell_shape" value="0" required aria-describedby="cell_shape_help" min="0" max="10">
                     <span class="help-tooltip" id="cell_shape_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
                 </div>
                 
