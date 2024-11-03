@@ -82,7 +82,83 @@ To run the application using Docker:
     ```bash
     docker run -p 5000:5000 breast-cancer-prediction-app
     ```
+=
+## Deployment to Google Cloud Platform (GCP)
 
+This section provides instructions on how to deploy the Cancer Prediction App using a Docker image on Google Cloud Platform.
+
+### Prerequisites
+
+Before you begin, ensure you have the following:
+
+- A Google Cloud account. If you don't have one, you can [sign up here](https://cloud.google.com/).
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed on your local machine.
+- Docker installed on your local machine.
+- A GCP project created.
+
+### Step 1: Build the Docker Image
+
+1. Navigate to the server directory where your `Dockerfile` is located.
+
+   ```bash
+   cd server
+   ```
+
+2. Build the Docker image. Replace `your-image-name` with a name for your image.
+
+   ```bash
+   docker build -t your-image-name .
+   ```
+
+### Step 2: Tag the Docker Image
+
+Tag the Docker image for Google Container Registry (GCR). Replace `YOUR_PROJECT_ID` with your actual GCP project ID.
+
+```bash
+docker tag your-image-name gcr.io/YOUR_PROJECT_ID/your-image-name
+```
+
+### Step 3: Push the Docker Image to Google Container Registry
+
+Authenticate with Google Cloud:
+
+```bash
+gcloud auth login
+```
+
+Set your project ID:
+
+```bash
+gcloud config set project YOUR_PROJECT_ID
+```
+
+Push the Docker image to GCR:
+
+```bash
+docker push gcr.io/YOUR_PROJECT_ID/your-image-name
+```
+
+### Step 4: Deploy the Docker Image to Google Cloud Run
+
+1. Deploy the image to Cloud Run. This command will create a new service named `your-service-name` from the Docker image. Replace the service name and image name as needed.
+
+   ```bash
+   gcloud run deploy your-service-name --image gcr.io/YOUR_PROJECT_ID/your-image-name --platform managed
+   ```
+
+2. Follow the prompts to select a region and allow unauthenticated invocations (if desired).
+
+### Step 5: Access Your Deployed App
+
+Once the deployment is complete, you will receive a URL where your Cancer Prediction App is hosted. You can access your app by navigating to this URL in your web browser.
+
+### Cleanup
+
+To avoid incurring charges, remember to delete your Cloud Run service when you no longer need it:
+
+```bash
+gcloud run services delete your-service-name --platform managed
+```
 
 ## Usage
 
