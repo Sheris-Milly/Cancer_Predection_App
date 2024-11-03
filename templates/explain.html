@@ -59,69 +59,86 @@
 
         /* Main content styling */
         .health-check {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: left;
-            padding: 60px 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            margin: 40px auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            max-width: 900px;
-        }
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9); /* Soft gradient background */
+    border-radius: 15px;
+    margin: 40px auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); /* Smoother, larger shadow */
+    max-width: 900px;
+    transition: all 0.3s ease; /* Smooth transitions */
+}
 
-        .health-check h1 {
-            color: #d14c86;
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            text-align: center;
-        }
+.health-check:hover {
+    transform: translateY(-10px); /* Subtle hover effect */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18); /* Stronger shadow on hover */
+}
 
-        .status {
-            font-size: 1.1rem;
-            line-height: 1.8; /* Improved readability */
-            color: #555;
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 30px; /* Indent text */
-        }
+.health-check h1 {
+    color: #d14c86;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
-        .status:before {
-            content: '•';
-            color: #d14c86;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
+.status {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 35px;
+    border-left: 4px solid #d14c86; /* Left border for emphasis */
+    transition: background 0.3s ease;
+}
 
-        .status strong {
-            color: #388e3c; /* Dark green for strong emphasis */
-        }
+.status:before {
+    content: '•';
+    color: #d14c86;
+    font-size: 1.7rem;
+    position: absolute;
+    left: 5px;
+    top: 0;
+}
 
-        /* Button styling */
-        .btn {
-            padding: 14px 28px;
-            background-color: #d14c86;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 20px;
-            display: inline-block;
-        }
+.status strong {
+    color: #2e7d32; /* Darker green for stronger contrast */
+    font-weight: 600;
+}
 
-        .btn:hover {
-            background-color: #b63c72; /* Darker pink on hover */
-            transform: translateY(-2px); /* Lift effect */
-        }
+.status:hover {
+    background-color: rgba(209, 76, 134, 0.05); /* Light background color on hover */
+}
 
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: #d81b60;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 30px;
+}
+
+.btn:hover {
+    background-color: #d81b60;
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.btn:active {
+    background-color: #d81b60;
+    transform: scale(1);
+}
         /* Footer styling */
         footer {
     background: linear-gradient(135deg, #d14c86 0%, #ff70a0 100%);
@@ -146,17 +163,21 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .health-check {
-                padding: 30px 20px;
-            }
+        padding: 40px 20px;
+    }
 
-            .health-check h1 {
-                font-size: 2rem;
-            }
+    .health-check h1 {
+        font-size: 2rem;
+    }
 
-            .status {
-                font-size: 1rem;
-                padding-left: 20px;
-            }
+    .status {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
             .nav-links {
         display: none; /* Hide links by default on mobile */
         flex-direction: column;
@@ -192,18 +213,24 @@
     <!-- Main Content: Explanations Section -->
     <div class="health-check">
         <h1>Breast Cancer Diagnosis Features</h1>
-        <p class="status"><strong>Clump Thickness:</strong> Refers to the thickness of cell clusters. Higher values may indicate the presence of cancerous cells as they tend to form clumps.</p>
-        <p class="status"><strong>Uniformity of Cell Size:</strong> Cancerous cells often vary in size. This feature measures how uniform the sizes of the cells are.</p>
-        <p class="status"><strong>Uniformity of Cell Shape:</strong> Similar to cell size, cancerous cells often vary in shape. This feature assesses the consistency in the shape of the cells.</p>
-        <p class="status"><strong>Marginal Adhesion:</strong> In healthy tissue, cells stick to each other. A decrease in adhesion can be a sign of malignancy.</p>
-        <p class="status"><strong>Single Epithelial Cell Size:</strong> Measures the size of individual epithelial cells, which tend to be larger in the presence of cancer.</p>
-        <p class="status"><strong>Bare Nuclei:</strong> Refers to the presence of nuclei without the surrounding cytoplasm. Bare nuclei are more commonly found in malignant tumors.</p>
-        <p class="status"><strong>Bland Chromatin:</strong> Chromatin is the material that makes up chromosomes. In cancerous cells, chromatin can appear less structured or more uniform.</p>
-        <p class="status"><strong>Normal Nucleoli:</strong> Nucleoli are small, dense structures within the nucleus. Larger or more numerous nucleoli are often a sign of cancer.</p>
-        <p class="status"><strong>Mitoses:</strong> Refers to cell division. A higher number of mitoses is usually indicative of rapid cell growth, which can signal cancer.</p>
-
+        <p class="status"><strong>Clump Thickness:</strong> Refers to the thickness of cell clusters. Higher values may indicate the formation of cell clumps, which can help detect signs of cancer.</p>
+        <p class="status"><strong>Uniformity of Cell Size:</strong> Cancerous cells often vary in size. This feature measures how uniform the sizes of the cells are, aiding in identifying possible malignancies.</p>
+        <p class="status"><strong>Uniformity of Cell Shape:</strong> Similar to cell size, cancerous cells often vary in shape. This feature assesses the consistency in the shape of the cells, assisting in the detection of abnormal growth.</p>
+        <p class="status"><strong>Marginal Adhesion:</strong> In healthy tissue, cells stick to each other. A decrease in adhesion may be a sign of malignant tissue, where cells lose their normal adhesion properties.</p>
+        <p class="status"><strong>Single Epithelial Cell Size:</strong> Measures the size of individual epithelial cells, which tend to be larger when signs of cancer are present.</p>
+        <p class="status"><strong>Bare Nuclei:</strong> Refers to the presence of nuclei without the surrounding cytoplasm. Bare nuclei are more commonly found in malignant tumors, helping to distinguish between benign and malignant cases.</p>
+        <p class="status"><strong>Bland Chromatin:</strong> Chromatin is the material that makes up chromosomes. In cancerous cells, chromatin can appear less structured, helping detect abnormalities.</p>
+        <p class="status"><strong>Normal Nucleoli:</strong> Nucleoli are small, dense structures within the nucleus. Larger or more numerous nucleoli are often associated with malignancies and help detect rapid cell growth.</p>
+        <p class="status"><strong>Mitoses:</strong> Refers to cell division. A higher number of mitoses is usually indicative of rapid growth, a common sign of cancer.</p>
+        
+        <h1>Understanding Tumor Types</h1>
+        <p class="status"><strong>Benign:</strong> Refers to a non-cancerous growth. Benign tumors do not spread to other parts of the body and are generally less harmful.</p>
+        <p class="status"><strong>Malignant:</strong> Refers to a cancerous growth. Malignant tumors can invade surrounding tissues and spread to other parts of the body, posing a greater health risk.</p>
+    
         <a href="{{ url_for('predict') }}" class="btn">Predict Tumor Type</a>
     </div>
+    
+    
 
     <!-- Footer -->
     <footer>
