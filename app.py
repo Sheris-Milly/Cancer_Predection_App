@@ -31,6 +31,18 @@ def predict():
         data.get('Mitoses', 0)
     ]
 
+    # Check if all features are 0
+    if all(f == 0 for f in features):
+        response = {
+            "prediction": "Benign",
+            "predicted_value": 0.0,
+            "probabilities": {
+                "Benign": 100.0,
+                "Malignant": 0.0
+            }
+        }
+        return jsonify(response)
+
     # Ensure each feature is within the range [1, 10]
     features = [min(max(f, 1), 10) for f in features]
 
