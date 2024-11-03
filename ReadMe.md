@@ -100,7 +100,7 @@ The Cancer Prediction App utilizes a machine learning model trained on historica
 
 ## Model Training
 
-If you are interested in how the machine learning model is trained, refer to the `model_training.py` script in the `server` directory. The model is evaluated and optimized using techniques like cross-validation and hyperparameter tuning to ensure accuracy.
+If you are interested in how the machine learning model is trained, refer to the `model.py` script in the directory. The model is evaluated and optimized using techniques like GridSearchCV  to ensure accuracy.
 
 ## Contributing
 
