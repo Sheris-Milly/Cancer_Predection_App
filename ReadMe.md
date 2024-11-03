@@ -82,7 +82,7 @@ To run the application using Docker:
     ```bash
     docker run -p 5000:5000 breast-cancer-prediction-app
     ```
-=
+
 ## Deployment to Google Cloud Platform (GCP)
 
 This section provides instructions on how to deploy the Cancer Prediction App using a Docker image on Google Cloud Platform.
@@ -205,4 +205,4 @@ For any inquiries, please contact:
 Thank you for using the Cancer Prediction App! We hope it proves helpful in understanding breast cancer prediction.
 ## Acknowledgments
 
-- Thanks to Professor Lamrani Yousseffor their guidance.
+- Thanks to Dr.Lamrani Youssef for their guidance.
