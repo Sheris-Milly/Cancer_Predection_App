@@ -116,7 +116,7 @@ print("Model and scaler saved successfully.")
 
 
 
-
+#imad
 
 
 
