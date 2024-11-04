@@ -198,8 +198,16 @@ For any inquiries, please contact:
 
 - **Name:** [Imad Agjoud](https://www.linkedin.com/in/imad-agjoud/)
 - **Email:** imadagjoud@gmail.com
-- **GitHub:** [Sheris-Milly](https://github.com/Sheris-Milly)
 
+----------
+
+- **Name:** [Wassef ARAGOU](https://www.linkedin.com/in/wassef-aragou-7569a9270/)
+
+- **Email:** aragou.wassef@gmail.com
+
+---
+- **Name:** [Mouad MALIH](https://www.linkedin.com/in/mouad-malih-756116288?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BefR4o3ClTtKrEOru3mmYhQ%3D%3D)
+- **Email:** mouad.malih.17@gmail.com
 ---
 
 Thank you for using the Cancer Prediction App! We hope it proves helpful in understanding breast cancer prediction.
