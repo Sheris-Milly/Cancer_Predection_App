@@ -5,7 +5,7 @@ steps:
       [
         "build",
         "-t",
-        "gcr.io/zinc-mantra-440520-a9/github.com/Sheris-Milly/Cancer_Predection_App:$COMMIT_SHA",
+        "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA",  # Corrected image name
         "./backend"
       ]
 
@@ -14,7 +14,7 @@ steps:
     args:
       [
         "push",
-        "gcr.io/zinc-mantra-440520-a9/github.com/Sheris-Milly/Cancer_Predection_App:$COMMIT_SHA"
+        "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA"  # Corrected image name
       ]
 
   # Deploy the image to Cloud Run
@@ -23,19 +23,19 @@ steps:
       [
         "run",
         "deploy",
-        "cancer-predection-app",          # Cloud Run service name
+        "cancer-predection-app",           # Cloud Run service name
         "--image",
-        "gcr.io/zinc-mantra-440520-a9/github.com/Sheris-Milly/Cancer_Predection_App:$COMMIT_SHA",
+        "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA",  # Corrected image name
         "--region",
         "europe-southwest1",
         "--platform",
         "managed",
-        "--allow-unauthenticated"         # Optional flag for public access
+        "--allow-unauthenticated"          # Optional flag for public access
       ]
 
 # Specify the image location to be pushed
 images:
-  - "gcr.io/zinc-mantra-440520-a9/github.com/Sheris-Milly/Cancer_Predection_App:$COMMIT_SHA"
+  - "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA"  # Corrected image name
 
 # Specify the bucket for logs if required
 logsBucket: "gs://staging.zinc-mantra-440520-a9.appspot.com"
