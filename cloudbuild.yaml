@@ -17,3 +17,6 @@ automatic_scaling:
 env_variables:
   FLASK_ENV: production
   # You can add other environment variables here, like API keys or secret keys
+
+options:
+logging: CLOUD_LOGGING_ONLY
