@@ -6,7 +6,7 @@ steps:
         "build",
         "-t",
         "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA",  # Corrected image name
-        "./backend"
+        "."  # Build from the root directory
       ]
 
   # Push the container image to Google Container Registry
@@ -23,14 +23,14 @@ steps:
       [
         "run",
         "deploy",
-        "cancer-predection-app",           # Cloud Run service name
+        "cancer-predection-app",  # Cloud Run service name
         "--image",
         "gcr.io/zinc-mantra-440520-a9/cancer-prediction-app:$COMMIT_SHA",  # Corrected image name
         "--region",
         "europe-southwest1",
         "--platform",
         "managed",
-        "--allow-unauthenticated"          # Optional flag for public access
+        "--allow-unauthenticated"  # Optional flag for public access
       ]
 
 # Specify the image location to be pushed
