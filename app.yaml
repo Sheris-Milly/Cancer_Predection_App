@@ -1,4 +1,4 @@
-runtime: python
+runtime: python310
 env: flex  # Specifies the Flexible environment
 
 # Required libraries
