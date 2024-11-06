@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Forest Regressor</title>
+    <title>Elastic Net Regressor</title>
     <link rel="icon" type="image/png" href="static/images/favicon-32x32.png" sizes="32x32">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -242,37 +242,37 @@
 
     <!-- Main Content -->
     <section class="main-content">
-        <h1>Random Forest Regressor</h1>
-        <p>The <span class="highlight">Random Forest Regressor</span> is a powerful machine learning model that builds multiple decision trees and outputs an average prediction for accurate regression results. It is a highly efficient model because of its <strong>ensemble learning</strong> approach, combining predictions of many trees to reduce overfitting and boost accuracy.</p>
+        <h1>Elastic Net Regressor</h1>
+        <p>The <span class="highlight">Elastic Net Regressor</span> is a powerful machine learning model that combines the L1 (Lasso) and L2 (Ridge) penalties to regularize the model, helping to improve prediction accuracy and model robustness. It balances the strengths of both penalties to prevent overfitting and handle multicollinearity.</p>
 
         <h2>How It Works</h2>
         <p>
-            1. <strong>Bootstrap Sampling:</strong> Random samples from the dataset are used to train different decision trees.<br>
-            2. <strong>Random Feature Selection:</strong> At each node, a random subset of features is considered to ensure the trees are less correlated.<br>
-            3. <strong>Aggregation:</strong> For regression, the model averages the outputs from all decision trees to provide the final prediction.
+            1. <strong>L1 Penalty (Lasso):</strong> Shrinks coefficients of less important features to zero, enabling feature selection.<br>
+            2. <strong>L2 Penalty (Ridge):</strong> Shrinks the coefficients uniformly, helping to reduce model complexity.<br>
+            3. <strong>Combination:</strong> Elastic Net combines both penalties to balance bias and variance in the model, resulting in improved generalization.
         </p>
 
         <div class="benefit-section">
             <div class="benefit">
                 <i class="fas fa-check-circle"></i>
-                <h3>Accuracy </h3><strong>88%</strong>
-                <p>Reduces overfitting that can occur with single decision trees, making it highly accurate for regression tasks.</p>
+                <h3>Accuracy </h3><strong>83%</strong>
+                <p>Balances L1 and L2 penalties for improved accuracy, providing a more generalizable model than Ridge or Lasso alone.</p>
             </div>
             <div class="benefit">
                 <i class="fas fa-shield-alt"></i>
                 <h3>Robustness</h3>
-                <p>Performs well even with missing data and provides a stable prediction by averaging over many trees.</p>
+                <p>Handles multicollinearity effectively and prevents overfitting by combining the strengths of Lasso and Ridge.</p>
             </div>
             <div class="benefit">
                 <i class="fas fa-code-branch"></i>
                 <h3>Versatility</h3>
-                <p>Works for both classification and regression tasks, offering flexibility across different domains.</p>
+                <p>Elastic Net works well for feature selection in high-dimensional datasets, making it suitable for various tasks.</p>
             </div>
         </div>
 
-        <h2>Random Forest Implementation in a Jupyter Notebook</h2>
-        <a href="{{ url_for('static', filename='best rf.html') }}" target="_blank" class="btn">Show the Jupyter Notebook</a>
-        <a href="{{ url_for('static', filename='best rf.ipynb') }}" target="_blank" class="btn">Download the Jupyter Notebook</a>
+        <h2>Elastic Net Implementation in a Jupyter Notebook</h2>
+        <a href="{{ url_for('static', filename='Models_NoteBook.html') }}" target="_blank" class="btn">Show the Jupyter Notebook</a>
+        <a href="{{ url_for('static', filename='Models_NoteBook.ipynb') }}" target="_blank" class="btn">Download the Jupyter Notebook</a>
     </section>
 
     <!-- Footer -->

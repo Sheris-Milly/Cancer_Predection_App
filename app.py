@@ -5,9 +5,8 @@ import numpy as np
 import os
 app = Flask(__name__)
 
-# Load the Random Forest model
-model = joblib.load('best_elastic_net.joblib')
-scaler_loaded = joblib.load('scalerR.joblib')
+model = joblib.load('models_files/best_elastic_net.joblib')
+scaler_loaded = joblib.load('models_files/scaler_Elastic_Net.joblib')
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -106,6 +105,3 @@ def ML_page():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080)
-
-
-#Imad_Test
