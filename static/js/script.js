@@ -45,25 +45,42 @@ function submitForm() {
 
 // Function to check the API status
 function checkApiStatus() {
+    // Show the modal and reset status message
+    document.getElementById('resultModal').style.display = 'flex';
+    const statusResult = document.getElementById('statusResult');
+    statusResult.innerText = 'Checking status...';
+    statusResult.classList.remove("status-online", "status-offline");
+
     // Send GET request to status endpoint
     fetch('/status')
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('statusResult').innerText = 'API is Online';
-            document.getElementById('statusResult').classList.add("status-box");
-        } else {
-            document.getElementById('statusResult').innerText = 'API is Offline';
-            document.getElementById('statusResult').classList.add("status-box");
-        }
-    })
-    .catch(() => {
-        document.getElementById('statusResult').innerText = 'API is Offline';
-        document.getElementById('statusResult').classList.add("status-box");
-    });
+        .then(response => {
+            if (response.ok) {
+                statusResult.innerHTML = '<p>API is Online :The system is <strong class="status-online">healthy</strong> and operational.</p>';
+                statusResult.classList.add("status-online");
+            } else {
+                statusResult.innerHTML = '<p>API is Offline :The system is <strong class="status-offline">currently down</strong>.</p>';
+                statusResult.classList.add("status-offline");
+            }
+        })
+        .catch(() => {
+            statusResult.innerHTML = '<p>The system is <strong class="status-offline">currently down</strong>.</p>';
+            statusResult.classList.add("status-offline");
+        });
 }
+
+function closeModal() {
+    document.getElementById('resultModal').style.display = 'none';
+}
+
+
 
 
 function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
             }
+
+
+
+
+

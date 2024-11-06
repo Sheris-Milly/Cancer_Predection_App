@@ -110,6 +110,46 @@
     display: none; /* Hidden on desktop */
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    animation: fadeSlideDown 0.5s ease-in-out;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #d81b60;
+    font-size: 1.2rem;
+}
+
+.close-button {
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #c2185b;
+}
 @media (max-width: 768px) {
     .nav-links {
         display: none; /* Hide links by default on mobile */
@@ -126,6 +166,15 @@
     .menu-toggle {
         display: block; /* Show toggle icon on mobile */
     }}
+        .status-online {
+    color: green;
+    font-weight: bold;
+}
+
+.status-offline {
+    color: red;
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
@@ -142,11 +191,19 @@
     </nav>
 
     <!-- Main Content: API Status Section -->
-    <div class="health-check">
-        <h1>System Health Status</h1>
-        <p class="status">The system is <strong>healthy</strong> and operational.</p>
-        <button class="btn" onclick="checkApiStatus()">Check API Status</button>
+<div class="health-check">
+    <h1>System Health Status</h1>
+    <button class="btn" onclick="checkApiStatus()">Check API Status</button>
+</div>
+
+<!-- Modal for displaying API status -->
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <p id="statusResult">Checking status...</p>
+        <button class="close-button" onclick="closeModal()">Close</button>
     </div>
+</div>
+
 
     <!-- Footer -->
     <footer>
@@ -161,3 +218,5 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+
+
