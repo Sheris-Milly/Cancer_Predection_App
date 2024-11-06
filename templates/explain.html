@@ -224,8 +224,10 @@
         <p class="status"><strong>Mitoses:</strong> Refers to cell division. A higher number of mitoses is usually indicative of rapid growth, a common sign of cancer.</p>
         
         <h1>Understanding Tumor Types</h1>
-        <p class="status"><strong>Benign:</strong> Refers to a non-cancerous growth. Benign tumors do not spread to other parts of the body and are generally less harmful.</p>
-        <p class="status"><strong>Malignant:</strong> Refers to a cancerous growth. Malignant tumors can invade surrounding tissues and spread to other parts of the body, posing a greater health risk.</p>
+        <p class="status">
+    <strong>Benign:</strong> Refers to a non-cancerous growth. Benign tumors do not spread to other parts of the body and are generally less harmful, <strong>when  predicted value &lt; 3</strong> .</p>
+
+        <p class="status"><strong>Malignant:</strong> Refers to a cancerous growth. Malignant tumors can invade surrounding tissues and spread to other parts of the body, posing a greater health risk,<strong>when 3 &lt;predicted value</strong> </p>
     
         <a href="{{ url_for('predict') }}" class="btn">Predict Tumor Type</a>
     </div>

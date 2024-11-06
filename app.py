@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 
 # Load the Random Forest model
-model = joblib.load('best_random_forest_model.joblib')
-scaler_loaded = joblib.load('scaler.joblib')
+model = joblib.load('best_elastic_net.joblib')
+scaler_loaded = joblib.load('scalerR.joblib')
 @app.route('/')
 def home():
     return render_template('index.html')
