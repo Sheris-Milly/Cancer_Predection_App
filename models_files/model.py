@@ -33,41 +33,10 @@ X_test_scaled = scaler.transform(X_test)
 
 
 
-from sklearn.linear_model import (
-    LinearRegression, Ridge, Lasso, ElasticNet,
-)
+from sklearn.linear_model import (ElasticNet)
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
-
-
-
-
-
-
-
-from sklearn.svm import SVR
-
-
-from sklearn.linear_model import LogisticRegression
-# Initialize the models
-models = {
-    'Linear Regression': LinearRegression(),
-    'Ridge Regression': Ridge(),
-    'LASSO Regression': Lasso(),
-    'Elastic Net': ElasticNet(),
-    'Random Forest': RandomForestRegressor(random_state=42),
-    'Logitic Regression': LogisticRegression(),
-}
-
-# Train and evaluate each model
-for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    score = r2_score(y_test, y_pred)
-    print(f"{name} R^2 score: {score:.4f}")
-
-
 from sklearn.model_selection import GridSearchCV
 
 #
@@ -105,11 +74,6 @@ joblib.dump(best_rf, 'best_random_forest_model.joblib')  # Save the best model
 joblib.dump(scaler, 'scaler.joblib')  # Save the scaler
 
 print("Model and scaler saved successfully.")
-
-
-
-
-#imad
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
