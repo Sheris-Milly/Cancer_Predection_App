@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
 import pandas as pd
-import numpy as np
-import os
 app = Flask(__name__)
 
 model = joblib.load('models_files/best_elastic_net.joblib')
@@ -102,10 +100,6 @@ def explain_page():
 @app.route('/ML')
 def ML_page():
     return render_template('ML.html')
-
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template("error.html"), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080)
