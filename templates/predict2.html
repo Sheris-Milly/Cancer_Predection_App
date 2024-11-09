@@ -300,7 +300,7 @@ footer {
 
                 // Change color based on prediction
                 const predictionClass = data.prediction === 'Benign' ? 'benign' : 'malignant';
-                resultContent.innerHTML = `Prediction: <span class="${predictionClass}">${data.prediction}</span> <br>(Value: ${data.predicted_value})`;
+                resultContent.innerHTML = `Tumor type: <span class="${predictionClass}">${data.prediction}</span> <br>(Value: ${data.predicted_value})`;
                 probabilityContent.innerText = `Probabilities \n - Benign: ${data.probabilities.Benign}% \n  - Malignant: ${data.probabilities.Malignant}%`;
 
                 resultModal.style.display = 'flex';
