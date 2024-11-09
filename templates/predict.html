@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breast Cancer Prediction</title>
     <link rel="icon" type="image/png" href="static/images/favicon-32x32.png" sizes="32x32">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -121,61 +122,97 @@
             transform: translateY(-2px); /* Lift effect on hover */
         }
 
-        /* Option Section */
-        .option-section {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            padding: 60px;
-            flex-wrap: wrap;
-            gap: 30px;
-            animation: fadeIn 1.5s ease-in-out forwards;
-        }
+      
+/* Option Section */
+.option-section {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between items */
+    align-items: center; /* Center the content vertically */
+    padding: 40px;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 30px;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
 
-        .option-card {
-            background-color: #ffffff;
-            text-align: center;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+.option-card {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    width: 320px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+}
 
-        .option-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
+.choose-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    width: 150px; /* Control width of the "Choose one" text */
+    min-height: 350px; /* Ensure it matches the height of the option cards */
+    flex-shrink: 0; /* Prevent shrinking */
+}
 
-        .option-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #333;
-            font-weight: 600;
-        }
+.option-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
 
-        .option-card p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
+.option-card h3 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
 
-        .option-card a {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #d14c86;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
+.option-card p {
+    font-size: 1.15rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
 
-        .option-card a:hover {
-            background-color: #b63c72;
-            transform: translateY(-2px);
-        }
+.option-card a {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #d14c86;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.option-card a:hover {
+    background-color: #b63c72;
+    transform: translateY(-3px);
+}
+
+/* Ensure the animation for fade-in is working */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 
         /* Footer */
         footer {
@@ -191,6 +228,24 @@
     position: relative; /* Makes sure it aligns properly within its parent */
     left: 0;
 }
+
+.github-icon {
+    color: white; /* Set color for the GitHub icon */
+    font-size: 1.5rem; /* Icon size */
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.github-icon i {
+    margin-right: 8px; /* Add spacing between the icon and the text */
+}
+
+.github-icon:hover {
+    color: #f1f1f1; /* Change color on hover */
+}
+
 
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
@@ -236,7 +291,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="logo-link" title="Click to open the GitHub repository of our project">
+        <a href="{{url_for('home')}}" target="_blank" class="logo-link">
             <div class="logo">Breast Cancer Prediction<span>.</span></div>
         </a> 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -254,15 +309,23 @@
             <p>Use the Elastic Net and Random Forest models to predict cancer stage and estimate treatment costs.</p>
             <a href="{{ url_for('predict1_page') }}">Go to Prediction</a>
         </div>
+    
+        <div class="choose-text">
+            <p>Choose one</p>
+        </div>
+    
         <div class="option-card">
             <h3>Predict Tumor Type</h3>
             <p>Use the Elastic Net model to predict whether a breast tumor is benign or malignant.</p>
             <a href="{{ url_for('predict2_page') }}">Go to Prediction</a>
         </div>
-    </section>
+    </section>    
 
     <footer>
         <p>© 2024 Breast Cancer Prediction. | All rights reserved.</p>
+        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="github-icon" title="Click to open the GitHub repository of our project">
+            <i class="fab fa-github"></i> GitHub
+        </a>
     </footer>
 
     <script>

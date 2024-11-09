@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="icon" type="image/png" href="static/images/favicon-32x32.png" sizes="32x32">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +19,22 @@ body {
     margin: 0;
 }
 
+.github-icon {
+    color: white; /* Set color for the GitHub icon */
+    font-size: 1.5rem; /* Icon size */
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none; /* Remove underline from link */
+}
 
+.github-icon i {
+    margin-right: 8px; /* Add spacing between the icon and the text */
+}
+
+.github-icon:hover {
+    color: #f1f1f1; /* Change color on hover */
+}
 /* Mobile menu toggle */
 .menu-toggle {
     font-size: 24px;
@@ -184,9 +200,9 @@ footer {
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="logo-link" title="Click to open the GitHub repository of our project">
+        <a href="{{url_for('home')}}" target="_blank" class="logo-link">
             <div class="logo">Breast Cancer Prediction<span>.</span></div>
-          </a> 
+        </a> 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -274,6 +290,9 @@ footer {
     <!-- Footer -->
     <footer>
         <p>© 2024 Breast Cancer Prediction. | All rights reserved.</p>
+        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="github-icon" title="Click to open the GitHub repository of our project">
+            <i class="fab fa-github"></i> GitHub
+        </a>
     </footer>
     <script>
         function toggleMenu() {
