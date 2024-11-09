@@ -3,187 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
     <link rel="icon" type="image/png" href="static/images/favicon-32x32.png" sizes="32x32">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Predict traitement price</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #fdf6fb; /* Light pink background */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Navbar */
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* Bounce Animation for Navbar Links */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-5px);
-    }
-    60% {
-        transform: translateY(-3px);
-    }
-}
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d14c86;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-/* Form Section */
-.form-section {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
-}
+        .logo {
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+        }
+        .logo-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit;        /* Inherit text color from surrounding elements */
+  }
 
-/* Fade-in Animation for Form Section */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.form-section h2 {
-    color: #d81b60;
-    margin-bottom: 1rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    color: #d81b60;
-    margin-bottom: 0.5rem;
-    text-align: left;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.form-group input:focus {
-    box-shadow: 0 0 8px rgba(216, 27, 96, 0.4);
-    outline: none;
-}
-
-/* Tooltip Styling */
-.help-tooltip {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 0.5rem;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    font-size: 0.875rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
-    z-index: 1000;
-}
-
-.form-group input:hover + .help-tooltip,
-.form-group input:focus + .help-tooltip {
-    display: block;
-}
-
-/* CTA Button with Bounce Animation */
-.cta-button {
-    background-color: #d81b60;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
+  /* Change cursor to pointer to indicate it's clickable */
+  .logo-link:hover .logo {
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-    animation: fadeIn 0.5s ease;
-}
+  }
 
-.cta-button:hover {
-    background-color: #c2185b;
-    animation: bounce 0.3s ease-in-out;
-}
+  /* Optional: Add some hover effect for better interaction */
+  .logo-link:hover .logo {
+    color: #000000; /* Change color when hovered, customize as needed */
+  }
 
-/* Modal Pop-up with Fade-in and Slide-down */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    animation: fadeSlideDown 0.5s ease-in-out;
-}
+        .logo span {
+            color: #fff;
+        }
 
-.modal-content {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #d81b60;
-    font-size: 1.2rem;
-}
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
 
-/* Fade-in and Slide-down Animation */
-@keyframes fadeSlideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-.close-button {
-    background-color: #d81b60;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
+        .nav-links li a:hover {
+            color: #ffefdb;
+        }
 
-.close-button:hover {
-    background-color: #c2185b;
-}
+        /* Mobile Nav Toggle */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: none; /* Hidden on desktop */
+        }
 
-/* Footer */
-footer {
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            background: linear-gradient(to right, #ff7eaa, #ffafcc);
+            color: white;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #d14c86;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #b63c72;
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        /* Option Section */
+        .option-section {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 60px;
+            flex-wrap: wrap;
+            gap: 30px;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .option-card {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .option-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .option-card p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-card a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #d14c86;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .option-card a:hover {
+            background-color: #b63c72;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
     background: linear-gradient(135deg, #d14c86 0%, #ff70a0 100%);
     color: white;
     text-align: center;
@@ -197,191 +192,79 @@ footer {
     left: 0;
 }
 
-/* Error Message with Fade-in Effect */
-.error-message {
-    color: #d81b60; /* Use your theme color */
-    background-color: #ffccdd; /* Light pink background */
-    padding: 1rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    text-align: center;
-    animation: fadeIn 0.4s ease-in-out;
-}
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                text-align: center;
+            }
 
-/* Text Styling for Malignant/Benign Status */
- .benign {
-            color: green;
-     font-weight: bold;
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block; /* Show toggle on mobile */
+            }
+
+            .option-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .option-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
         }
-        .malignant {
-            color: red;
-            font-weight: bold;
 
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-.menu-toggle {
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-    display: none; /* Hidden on desktop */
-}
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Hide links by default on mobile */
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Show the links when menu is toggled */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block; /* Show toggle icon on mobile */
-    }}
     </style>
-    <script>
-        function submitForm() {
-    const data = {
-        'Clump Thickness': parseInt(document.getElementById('clump_thickness').value),
-        'Uniformity of Cell Size': parseInt(document.getElementById('cell_size').value),
-        'Uniformity of Cell Shape': parseInt(document.getElementById('cell_shape').value),
-        'Marginal Adhesion': parseInt(document.getElementById('marginal_adhesion').value),
-        'Single Epithelial Cell Size': parseInt(document.getElementById('epithelial_cell_size').value),
-        'Bare Nuclei': parseInt(document.getElementById('bare_nuclei').value),
-        'Bland Chromatin': parseInt(document.getElementById('bland_chromatin').value),
-        'Normal Nucleoli': parseInt(document.getElementById('normal_nucleoli').value),
-        'Mitoses': parseInt(document.getElementById('mitoses').value)
-    };
-
-    fetch('/predict', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        const resultModal = document.getElementById('resultModal');
-        const resultContent = document.getElementById('resultContent');
-
-        // Display both price and stage predictions
-        resultContent.innerHTML = `
-            Prediction du prix : $${data.predicted_value}<br>
-            Stage du cancer : ${data.predicted_stage}
-        `;
-
-        // Optionally, change the color of the result based on the predicted stage
-        if (data.predicted_stage <= 2) {
-            resultContent.style.color = 'green'; // early stages
-        } else if (data.predicted_stage <= 4) {
-            resultContent.style.color = 'orange'; // middle stages
-        } else {
-            resultContent.style.color = 'red'; // advanced stage
-        }
-
-        // Show the modal with results
-        resultModal.style.display = 'flex';
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-
-        function closeModal() {
-            document.getElementById('resultModal').style.display = 'none';
-        }
-    </script>
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="logo-link" title="Click to open the GitHub repository of our project">
+            <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        </a> 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('predict_page') }}">Predict</a></li>
             <li><a href="{{ url_for('status') }}">Status</a></li>
             <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
         </ul>
     </nav>
 
-    <main>
-        <section class="form-section">
-            <h2>Enter Tumor Characteristics</h2>
-            <a href="{{ url_for('explain_page') }}">
-                <button class="cta-button">Detect signs of cancer</button>
-            </a>
-			<div id="errorMessage" class="error-message" style="display: none;"></div>
-            <form id="predictForm">
-                <div class="form-group">
-                    <label for="clump_thickness">Clump Thickness</label>
-                    <input type="number" id="clump_thickness" value="0" required aria-describedby="clump_help" min="0" max="10">
-                    <span class="help-tooltip" id="clump_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>                
-                <div class="form-group">
-                    <label for="cell_size">Uniformity of Cell Size</label>
-                    <input type="number" id="cell_size" value="0" required aria-describedby="cell_size_help" min="0" max="10">
-                    <span class="help-tooltip" id="cell_size_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cell_shape">Uniformity of Cell Shape</label>
-                    <input type="number" id="cell_shape" value="0" required aria-describedby="cell_shape_help" min="0" max="10">
-                    <span class="help-tooltip" id="cell_shape_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="marginal_adhesion">Marginal Adhesion</label>
-                    <input type="number" id="marginal_adhesion" value="0" required aria-describedby="marginal_adhesion_help" min="0" max="10">
-                    <span class="help-tooltip" id="marginal_adhesion_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="epithelial_cell_size">Single Epithelial Cell Size</label>
-                    <input type="number" id="epithelial_cell_size" value="0" required aria-describedby="epithelial_cell_size_help" min="0" max="10">
-                    <span class="help-tooltip" id="epithelial_cell_size_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="bare_nuclei">Bare Nuclei</label>
-                    <input type="number" id="bare_nuclei" value="0" required aria-describedby="bare_nuclei_help" min="0" max="10">
-                    <span class="help-tooltip" id="bare_nuclei_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="bland_chromatin">Bland Chromatin</label>
-                    <input type="number" id="bland_chromatin" value="0" required aria-describedby="bland_chromatin_help" min="0" max="10">
-                    <span class="help-tooltip" id="bland_chromatin_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="normal_nucleoli">Normal Nucleoli</label>
-                    <input type="number" id="normal_nucleoli" value="0" required aria-describedby="normal_nucleoli_help" min="0" max="10">
-                    <span class="help-tooltip" id="normal_nucleoli_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="mitoses">Mitoses</label>
-                    <input type="number" id="mitoses" value="0" required aria-describedby="mitoses_help" min="0" max="10">
-                    <span class="help-tooltip" id="mitoses_help">Default is 0 if left empty.Values are in the range [0, 10]</span>
-                </div>                
-                <button type="button" class="cta-button" onclick="submitForm()">Predict</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- Modal Pop-up -->
-    <div id="resultModal" class="modal">
-        <div class="modal-content">
-            <p id="resultContent"></p>
-            <button onclick="document.getElementById('resultModal').style.display='none'"></button>
-            <button class="close-button" onclick="closeModal()">Close</button>
+    <section class="option-section">
+        <div class="option-card">
+            <h3>Predict Cancer Stage & Treatment Cost</h3>
+            <p>Use the Elastic Net and Random Forest models to predict cancer stage and estimate treatment costs.</p>
+            <a href="{{ url_for('predict1_page') }}">Go to Prediction</a>
         </div>
-    </div>
+        <div class="option-card">
+            <h3>Predict Tumor Type</h3>
+            <p>Use the Elastic Net model to predict whether a breast tumor is benign or malignant.</p>
+            <a href="{{ url_for('predict2_page') }}">Go to Prediction</a>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
+        <p>© 2024 Breast Cancer Prediction. | All rights reserved.</p>
     </footer>
+
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
@@ -390,4 +273,3 @@ footer {
     </script>
 </body>
 </html>
-

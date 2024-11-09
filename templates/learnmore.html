@@ -147,16 +147,32 @@
                 height: auto;
             }
         }
+        .logo-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit;        /* Inherit text color from surrounding elements */
+  }
+
+  /* Change cursor to pointer to indicate it's clickable */
+  .logo-link:hover .logo {
+    cursor: pointer;
+  }
+
+  /* Optional: Add some hover effect for better interaction */
+  .logo-link:hover .logo {
+    color: #000000; /* Change color when hovered, customize as needed */
+  }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="logo-link" title="Click to open the GitHub repository of our project">
+            <div class="logo">Breast Cancer Prediction<span>.</span></div>
+          </a>     
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('predict_page') }}">Predict</a></li>
             <li><a href="{{ url_for('status') }}">Status</a></li>
             <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
         </ul>
@@ -177,7 +193,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
+        <p>© 2024 Breast Cancer Prediction. | All rights reserved.</p>
     </footer>
 
     <script>

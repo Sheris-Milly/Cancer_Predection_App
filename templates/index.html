@@ -156,16 +156,32 @@ footer {
         transform: translateY(0);
     }
 }
+.logo-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit;        /* Inherit text color from surrounding elements */
+  }
+
+  /* Change cursor to pointer to indicate it's clickable */
+  .logo-link:hover .logo {
+    cursor: pointer;
+  }
+
+  /* Optional: Add some hover effect for better interaction */
+  .logo-link:hover .logo {
+    color: #000000; /* Change color when hovered, customize as needed */
+  }
 
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Breast Cancer Prediction<span>.</span></div>
+        <a href="https://github.com/Sheris-Milly/Cancer_Predection_App" target="_blank" class="logo-link" title="Click to open the GitHub repository of our project">
+            <div class="logo">Breast Cancer Prediction<span>.</span></div>
+          </a> 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('predict_page') }}">Predict</a></li>
             <li><a href="{{ url_for('status') }}">Status</a></li>
             <li><a href="{{ url_for('aboutus_page') }}">Team</a></li>
         </ul>
@@ -174,8 +190,8 @@ footer {
     <section class="hero">
         <div class="hero-content">
             <h2>Empowering Early Detection</h2>
-            <p>Our tool leverages AI to support healthcare professionals in the early detection of breast cancer. Let's make a difference together.</p>
-            <a href="{{ url_for('predict') }}" class="cta-button">Start Prediction</a>
+<p>Our AI-driven tool assists healthcare professionals in accurately identifying breast cancer, determining the tumor type, and assessing the stage of cancer. It also provides insights into potential treatment options and associated costs in the United States. Together, we can make a difference in early cancer detection and care.</p>
+            <a href="{{ url_for('predict_page') }}" class="cta-button">Start Prediction</a>
         </div>
     </section>
 
@@ -191,7 +207,7 @@ footer {
             <img src="{{ url_for('static', filename='images/icon2.svg') }}" alt="Healthcare Illustration" style="width: 100px; height: 100px;">
             <h3>AI-Powered </h3>
             <p class="p1">Predict breast cancer probability with reliable, AI-driven insights for better outcomes.</p>
-            <a href="{{url_for('ML_page')}}" class="cta-button">About Our Model</a>
+            <a href="{{url_for('ML_page')}}" class="cta-button">About Our Models</a>
         </section>
 
         <section class="info-card">
@@ -203,7 +219,7 @@ footer {
     </main>
 
     <footer>
-        <p>© 2024 Breast Cancer Prediction. All rights reserved.</p>
+        <p>© 2024 Breast Cancer Prediction. | All rights reserved.</p>
     </footer>
 
     <script>
