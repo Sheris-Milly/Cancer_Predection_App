@@ -162,5 +162,14 @@ def explain_page():
 def ML_page():
     return render_template('ML.html')
 
+
+@app.errorhandler(Exception)
+def handle_error(error):
+    # You can pass the error details to the template
+    return render_template('error.html',
+                           error_code=error.code if hasattr(error, 'code') else 500,
+                           error_description=str(error)), 500
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080)
